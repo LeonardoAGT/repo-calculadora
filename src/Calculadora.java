@@ -1,17 +1,26 @@
+import funciones.Aritmetica;
+
+/**
+ * Clase principal, utiliza una instancia única de calculadora,
+ * para realizar todas las operaciones solicitadas
+ */
 public class Calculadora {
-    public static void main(String[] args) {
-        System.out.println("Hola mundo!!!");
-        System.out.println("Hola de nuevo!!!");
+    private static Calculadora calc;
 
-        System.out.println(sumar(2, 4));
-        System.out.println(restar(4, 2));
+    private Calculadora() {}
+
+    public static Calculadora getCalculadora() {
+        if (calc == null) {
+            calc = new Calculadora();
+        }
+        return calc;
     }
 
-    public static int sumar(int a, int b) {
-        return a + b;
+    public int sumar(int a, int b) {
+        return Aritmetica.sumar(a, b);
     }
 
-    public static int restar(int a, int b) {
-        return a - b;
+    public int restar(int a, int b) {
+        return Aritmetica.restar(a, b);
     }
 }
