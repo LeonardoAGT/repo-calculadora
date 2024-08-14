@@ -1,5 +1,7 @@
 import funciones.Aritmetica;
 
+import java.math.BigDecimal;
+
 /**
  * Clase principal, utiliza una instancia única de calculadora,
  * para realizar todas las operaciones solicitadas
@@ -16,19 +18,31 @@ public class Calculadora {
         return calc;
     }
 
-    public int sumar(int a, int b) {
+    public BigDecimal sumar(String val1, String val2) {
+        BigDecimal a = BigDecimal.valueOf(Double.parseDouble(val1));
+        BigDecimal b = BigDecimal.valueOf(Double.parseDouble(val2));
+
         return Aritmetica.sumar(a, b);
     }
 
-    public int restar(int a, int b) {
+    public BigDecimal restar(String val1, String val2) {
+        BigDecimal a = BigDecimal.valueOf(Double.parseDouble(val1));
+        BigDecimal b = BigDecimal.valueOf(Double.parseDouble(val2));
+
         return Aritmetica.restar(a, b);
     }
 
-    public int multiplicar(int a, int b){
+    public BigDecimal multiplicar(String val1, String val2){
+        BigDecimal a = BigDecimal.valueOf(Double.parseDouble(val1));
+        BigDecimal b = BigDecimal.valueOf(Double.parseDouble(val2));
+
         return Aritmetica.multiplicar(a, b);
     }
 
-    public void dividir(int a, int b){
-        System.out.println((b!=0) ? Aritmetica.dividir(a, b) : "Error");
+    public BigDecimal dividir(String val1, String val2){
+        BigDecimal a = BigDecimal.valueOf(Double.parseDouble(val1));
+        BigDecimal b = BigDecimal.valueOf(Double.parseDouble(val2));
+
+        return Aritmetica.dividir(a, b);
     }
 }
