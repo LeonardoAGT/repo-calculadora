@@ -23,4 +23,12 @@ public class Calculadora {
     public int restar(int a, int b) {
         return Aritmetica.restar(a, b);
     }
+
+    public int multiplicar(int a, int b){
+        return Aritmetica.multiplicar(a, b);
+    }
+
+    public void dividir(int a, int b){
+        System.out.println((b!=0) ? Aritmetica.dividir(a, b) : "Error");
+    }
 }
