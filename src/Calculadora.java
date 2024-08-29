@@ -1,6 +1,13 @@
 import funciones.Aritmetica;
+import funciones.Trigonometria;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Clase principal, utiliza una instancia única de calculadora,
@@ -11,11 +18,30 @@ public class Calculadora {
 
     private Calculadora() {}
 
+    private enum Metodos {
+        
+    }
+
     public static Calculadora getCalculadora() {
         if (calc == null) {
             calc = new Calculadora();
         }
         return calc;
+    }
+
+    public BigDecimal calcular(Opcion opcion, String... vals) {
+        List<BigDecimal> lista = Arrays.stream(vals)
+                .map(BigDecimal::new)
+                .toList();
+
+        Map<Opcion, Function<String[], BigDecimal>> map;
+
+        switch (opcion) {
+            case SUMAR -> {
+                return Aritmetica.sumar(lista.get(0), lista.get(1));
+            }
+            default -> throw new UnsupportedOperationException("Operación inválida");
+        }
     }
 
     public BigDecimal sumar(String val1, String val2) {
@@ -44,5 +70,15 @@ public class Calculadora {
         BigDecimal b = BigDecimal.valueOf(Double.parseDouble(val2));
 
         return Aritmetica.dividir(a, b);
+    }
+
+    public BigDecimal sen(String val) {
+        BigDecimal angulo = BigDecimal.valueOf(Double.parseDouble(val));
+        return Trigonometria.sen(angulo);
+    }
+
+    public BigDecimal tan(String val) {
+        BigDecimal angulo = BigDecimal.valueOf(Double.parseDouble(val));
+        return Trigonometria.tan(angulo);
     }
 }
